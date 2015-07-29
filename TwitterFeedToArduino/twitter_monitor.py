@@ -9,7 +9,7 @@ from requests_oauthlib import OAuth1
 import time
 import serial # from pyserial, from pip
 
-s = serial.Serial(port='/dev/tty.usbserial-09KP8190', baudrate=115200)
+s = serial.Serial(port='/dev/tty.usbserial-09KP8190', baudrate=9600)
 
 # Get the following values from the OAuth tool in your Twitter app dashboard.
 access_token = '3375696081-BDamafVyBmwXmNu60VCVeVk89VK0DQUFDwGQ60e'
@@ -33,8 +33,8 @@ for line in r.iter_lines(chunk_size=64):
     if time.time() - last_request > 1: # max 1 request/sec
         real_response = requests.get('https://api.twitter.com/1.1/statuses/mentions_timeline.json', params={'screen_name': 'dansoffice', 'count': '1'}, auth=auth)
         text = real_response.json()[0]['text']
-        if (text.startswith('@dansoffice ')):
-            text = text.replace('@dansoffice ', '')
+        if (text.startswith('@PrinceHomeIoT ')):
+            text = text.replace('@PrinceHomeIoT ', '')
         print text
         s.write(text[0:80]) # 80 char limit on the LCD
         last_request = time.time()
