@@ -19,7 +19,7 @@ def on_push(data):
     print(data)
     global pb
     pushes = pb.get_pushes(None, 1) #Get latest push, just one
-    latest = pushes[0]
+    latest = pushes[2]
     print(latest)
     #print('Received data:\n{}'.format(data))
 
