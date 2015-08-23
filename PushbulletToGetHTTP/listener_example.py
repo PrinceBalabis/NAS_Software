@@ -21,7 +21,8 @@ def on_push(data):
     global pb
     pushes = pb.get_pushes(None, 1) #Get latest push, just one
     latest = pushes[1]
-    for key, value in dict.items(latest['body']):
+    json_message = json.loads(latest)
+    for key, value in dict.items(json_message['body']):
         print key, value
     #print(latest)
     #print('Received data:\n{}'.format(data))
