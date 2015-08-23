@@ -16,7 +16,7 @@ HTTP_PROXY_HOST = None
 HTTP_PROXY_PORT = None
 
 def on_push(data):
-    for key, value in dict.items(data["body"]):
+    for key, value in dict.items(data['body']):
         print key, value
     #print(data)
     #global pb
