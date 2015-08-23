@@ -2,6 +2,7 @@
 
 __author__ = 'Prince Stevie-Ray Charles Balabis <princebalabis@gmail.com>'
 import logging
+import json
 
 from pushbullet import Listener
 from pushbullet import Pushbullet
@@ -18,8 +19,10 @@ def on_push(data):
     print(data)
     global pb
     pushes = pb.get_pushes(None, 1) #Get latest push, just one
-    latest = pushes[1]
-    print(latest)
+    #latest = pushes[1]
+    #print(latest)
+    json_data = json.load(pushes)
+    print(json_data)
     #print('Received data:\n{}'.format(data))
 
 
