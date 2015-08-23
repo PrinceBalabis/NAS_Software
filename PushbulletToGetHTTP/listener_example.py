@@ -19,7 +19,7 @@ def on_push(data):
     print(data)
     global pb
     pushes = pb.get_pushes()
-    print(pushes)
+    print(pushes[0])
     #print('Received data:\n{}'.format(data))
 
 
