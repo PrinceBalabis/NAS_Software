@@ -6,7 +6,7 @@ import logging
 from pushbullet import Listener
 from pushbullet import Pushbullet
 
-pb_a = 0
+pb = 0
 
 #logging.basicConfig(level=logging.DEBUG)
 
@@ -17,14 +17,14 @@ HTTP_PROXY_PORT = None
 
 def on_push(data):
     print(data)
-    pb pb_a
+    global pb
     pb.get_pushes()
     print(pushes)
     #print('Received data:\n{}'.format(data))
 
 
 def main():
-    pb pb_a
+    global pb
     pb = Pushbullet(API_KEY)
 
     s = Listener(account=pb,
