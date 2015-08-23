@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-__author__ = 'Igor Maculan <n3wtron@gmail.com>'
+__author__ = 'Prince Stevie-Ray Charles Balabis <princebalabis@gmail.com>'
 import logging
 
 from pushbullet import Listener
@@ -9,7 +9,7 @@ from pushbullet import Pushbullet
 
 logging.basicConfig(level=logging.DEBUG)
 
-API_KEY = ''  # YOUR API KEY
+API_KEY = 'X5UEjwDNYFw4mWqa0GHF2KSvcSC3m51u'
 HTTP_PROXY_HOST = None
 HTTP_PROXY_PORT = None
 
