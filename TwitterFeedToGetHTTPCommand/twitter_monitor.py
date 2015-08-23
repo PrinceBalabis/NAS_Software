@@ -7,9 +7,7 @@ import json
 import requests
 from requests_oauthlib import OAuth1
 import time
-import serial # from pyserial, from pip
-
-s = serial.Serial(port='/dev/tty.usbserial-09KP8190', baudrate=9600)
+import urllib2
 
 # Get the following values from the OAuth tool in your Twitter app dashboard.
 access_token = '3375696081-BDamafVyBmwXmNu60VCVeVk89VK0DQUFDwGQ60e'
@@ -35,6 +33,5 @@ for line in r.iter_lines(chunk_size=64):
         text = real_response.json()[0]['text']
         if (text.startswith('@PrinceHomeIoT ')):
             text = text.replace('@PrinceHomeIoT ', '')
-        print text
-        s.write(text[0:80]) # 80 char limit on the LCD
+            urllib2.urlopen("http://princehome.duckdns.org:9500?c"+text).read()
         last_request = time.time()
