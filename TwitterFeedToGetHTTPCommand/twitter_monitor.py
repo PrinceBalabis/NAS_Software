@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Prints out updates to a serial port whenever someone @replies to @dansoffice.
+#  Run: "python -m pip install requests_oauthlib" first to install requests_oauthlib python module
 
 import httplib
 import json
@@ -29,9 +29,9 @@ for line in r.iter_lines(chunk_size=64):
     # of the upcoming tweet will happen every time a tweet comes in. So...
     # just read the twitter feed every time a new tweet comes in. Meh!
     if time.time() - last_request > 1: # max 1 request/sec
-        real_response = requests.get('https://api.twitter.com/1.1/statuses/mentions_timeline.json', params={'screen_name': 'dansoffice', 'count': '1'}, auth=auth)
+        real_response = requests.get('https://api.twitter.com/1.1/statuses/mentions_timeline.json', params={'screen_name': 'PrinceHomeIoT', 'count': '1'}, auth=auth)
         text = real_response.json()[0]['text']
-        if (text.startswith('@PrinceHomeIoT ')):
-            text = text.replace('@PrinceHomeIoT ', '')
-            urllib2.urlopen("http://princehome.duckdns.org:9500?c"+text).read()
+        #if (text.startswith('@PrinceHomeIoT ')):
+        text = text.replace('@PrinceHomeIoT ', '')
+        urllib2.urlopen("http://princehome.duckdns.org:9500?c"+text).read()
         last_request = time.time()
