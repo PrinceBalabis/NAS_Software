@@ -17,7 +17,7 @@ HTTP_PROXY_PORT = None
 
 def on_push(data):
 
-    print(data[0])
+    print(data)
     #global pb
     #pushes = pb.get_pushes(None, 1) #Get latest push, just one
     #latest = pushes[1]
