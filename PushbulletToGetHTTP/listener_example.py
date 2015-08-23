@@ -16,7 +16,9 @@ HTTP_PROXY_HOST = None
 HTTP_PROXY_PORT = None
 
 def on_push(data):
-    dataDecoded = json.load(data)
+    dataDecoded = json.loads(data)
+    for key, value in dict.items(dataDecoded["body"]):
+    print key, value
     #print(data)
     #global pb
     #pushes = pb.get_pushes(None, 1) #Get latest push, just one
