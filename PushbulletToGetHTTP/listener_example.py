@@ -2,6 +2,7 @@
 
 __author__ = 'Prince Stevie-Ray Charles Balabis <princebalabis@gmail.com>'
 import logging
+import json
 
 from pushbullet import Listener
 from pushbullet import Pushbullet
@@ -15,11 +16,12 @@ HTTP_PROXY_HOST = None
 HTTP_PROXY_PORT = None
 
 def on_push(data):
-    print(data)
-    global pb
-    pushes = pb.get_pushes(None, 1) #Get latest push, just one
-    latest = pushes[1]
-    print(latest)
+    dataDecoded = json.load(data)
+    #print(data)
+    #global pb
+    #pushes = pb.get_pushes(None, 1) #Get latest push, just one
+    #latest = pushes[1]
+    #print(latest)
     #print('Received data:\n{}'.format(data))
 
 
