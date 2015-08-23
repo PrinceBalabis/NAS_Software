@@ -16,12 +16,13 @@ HTTP_PROXY_HOST = None
 HTTP_PROXY_PORT = None
 
 def on_push(data):
-    for key, value in dict.items(data['body']):
-        print key, value
+
     #print(data)
-    #global pb
-    #pushes = pb.get_pushes(None, 1) #Get latest push, just one
-    #latest = pushes[1]
+    global pb
+    pushes = pb.get_pushes(None, 1) #Get latest push, just one
+    latest = pushes[1]
+    for key, value in dict.items(latest['body']):
+        print key, value
     #print(latest)
     #print('Received data:\n{}'.format(data))
 
