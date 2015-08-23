@@ -19,9 +19,9 @@ def on_push(data):
     print(data)
     global pb
     pushes = pb.get_pushes(None, 1) #Get latest push, just one
-    #latest = pushes[1]
+    latest = pushes[1]
     #print(latest)
-    json_data = json.load(pushes)
+    json_data = json.load(latest)
     print(json_data)
     #print('Received data:\n{}'.format(data))
 
