@@ -16,6 +16,8 @@ HTTP_PROXY_PORT = None
 
 def on_push(data):
     print(data)
+    pushes = pb.get_pushes()
+    print(pushes)
     #print('Received data:\n{}'.format(data))
 
 
