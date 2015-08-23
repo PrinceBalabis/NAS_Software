@@ -17,13 +17,13 @@ HTTP_PROXY_PORT = None
 
 def on_push(data):
 
-    #print(data)
-    global pb
-    pushes = pb.get_pushes(None, 1) #Get latest push, just one
-    latest = pushes[1]
-    json_message = json.loads(latest)
-    for key, value in dict.items(json_message['body']):
-        print key, value
+    print(data[0])
+    #global pb
+    #pushes = pb.get_pushes(None, 1) #Get latest push, just one
+    #latest = pushes[1]
+    #json_message = json.loads(latest)
+    #for key, value in dict.items(json_message['body']):
+    #    print key, value
     #print(latest)
     #print('Received data:\n{}'.format(data))
 
