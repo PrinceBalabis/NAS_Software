@@ -3,6 +3,7 @@
 __author__ = 'Prince Stevie-Ray Charles Balabis <princebalabis@gmail.com>'
 import logging
 import json
+import urllib2
 
 from pushbullet import Listener
 from pushbullet import Pushbullet
@@ -16,17 +17,17 @@ HTTP_PROXY_HOST = None
 HTTP_PROXY_PORT = None
 
 def on_push(data):
-
-    print(data)
-    #global pb
-    #pushes = pb.get_pushes(None, 1) #Get latest push, just one
-    #latest = pushes[1]
-    #json_message = json.loads(latest)
-    #for key, value in dict.items(json_message['body']):
-    #    print key, value
-    #print(latest)
-    #print('Received data:\n{}'.format(data))
-
+    global pb
+    pushes = pb.get_pushes(None, 1) #Get latest push, just one
+    parsed_data = json.dumps(pushes[1]) # Convert to String
+    json_object = json.loads(parsed_data) # Convert to JSON Object
+    title_message = json_object[0]['title'] # Parse JSON Object
+    body_message = json_object[0]['body'] # Parse JSON Object
+    #print(title_message) #print title
+    if title_message in 'PrinceHome': # Check if the push is a PrinceHome type
+        print('Got PrinceHome command!')
+        #print(body_message) #print body
+        urllib2.urlopen("http://192.168.1.13:9500?c"+body_message).read() #Send command to HomeNetwork
 
 def main():
     global pb
