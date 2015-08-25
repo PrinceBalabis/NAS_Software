@@ -55,6 +55,7 @@ class S(BaseHTTPRequestHandler):
 	#Print action feedback
 	self.wfile.write("<html><body><h1>"+returnmessage+"</h1></body></html>")
 	print returnmessage
+    print post_data
 
 	#Run shell command to send rf24 command
 	#def main():
