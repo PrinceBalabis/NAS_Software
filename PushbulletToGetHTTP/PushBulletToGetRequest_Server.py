@@ -25,8 +25,7 @@ def on_push(data):
     body_message = json_object[0]['body'] # Parse JSON Object
     #print(title_message) #print title
     if title_message in 'PrinceHome': # Check if the push is a PrinceHome type
-        print('Got PrinceHome command!')
-        #print(body_message) #print body
+        print('Got PrinceHome command: ' + body_message)
         urllib2.urlopen("http://192.168.1.13:9500?c"+body_message).read() #Send command to HomeNetwork
 
 def main():
