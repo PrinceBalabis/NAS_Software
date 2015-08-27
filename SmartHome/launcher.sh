@@ -1,6 +1,6 @@
 #!/bin/sh
 
 cd /
-cd root/RaspberryPi/smarthome
+cd root/NAS_Software/SmartHome
 sudo ./smarthomeserver.py &
 cd /
