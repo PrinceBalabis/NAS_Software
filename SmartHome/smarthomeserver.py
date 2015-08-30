@@ -47,12 +47,12 @@ class S(BaseHTTPRequestHandler):
 
         action = "Didn't understand command!"
         returnmessage = "Didn't understand command!"
-        if post_data[112] == 'x':
+        if 'LocationExit' in post_data :
             returnmessage = 'You just exited the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('0')
             urllib2.urlopen("http://192.168.1.13:9500?c3").read() #Send command to HomeNetwork
-        elif post_data[112] == 'n':
+        elif 'LocationEnter' in post_data:
             returnmessage = 'You just entered the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('1')
