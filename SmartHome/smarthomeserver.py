@@ -51,12 +51,12 @@ class S(BaseHTTPRequestHandler):
             returnmessage = 'You just exited the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('0')
-            urllib2.urlopen('http://192.168.1.13:9500?c3').read()  # Send command to HomeNetwork
+            urllib2.urlopen('http://192.168.1.13:9500?c3')  # Send command to HomeNetwork
         elif 'LocationEnter' in post_data:
             returnmessage = 'You just entered the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('1')
-            urllib2.urlopen('http://192.168.1.13:9500?c4').read()  # Send command to HomeNetwork
+            urllib2.urlopen('http://192.168.1.13:9500?c4')  # Send command to HomeNetwork
         else:
             print post_data
 
