@@ -1,3 +1,6 @@
+This webserver is used to connect HomeNetwork to the internet
+
+
 Have GeoHooper installed on iPhone:
 Webservice:
 	URL: http://princehome.duckdns.org:4050/
