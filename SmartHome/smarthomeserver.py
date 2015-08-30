@@ -13,7 +13,7 @@ Usage::
     sudo python smarthomeserver.py [<port>]
     or sudo python smarthomeserver.py
 
-Use  http://pythoniter.appspot.com/ to beautify/indent python code
+Use http://pythoniter.appspot.com/ to beautify/indent python code
 """
 
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
@@ -47,22 +47,23 @@ class S(BaseHTTPRequestHandler):
 
         action = "Didn't understand command!"
         returnmessage = "Didn't understand command!"
-        if 'LocationExit' in post_data :
+        if 'LocationExit' in post_data:
             returnmessage = 'You just exited the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('0')
-            urllib2.urlopen("http://192.168.1.13:9500?c3").read() #Send command to HomeNetwork
+            urllib2.urlopen('http://192.168.1.13:9500?c3').read()  # Send command to HomeNetwork
         elif 'LocationEnter' in post_data:
             returnmessage = 'You just entered the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('1')
-            urllib2.urlopen("http://192.168.1.13:9500?c4").read() #Send command to HomeNetwork
+            urllib2.urlopen('http://192.168.1.13:9500?c4').read()  # Send command to HomeNetwork
         else:
             print post_data
 
         # Print action feedback
-        self.wfile.write('<html><body><h1>' + returnmessage
-                         + '</h1></body></html>')
+        # self.wfile.write('<html><body><h1>' + returnmessage
+        #                 + '</h1></body></html>')
+
         print returnmessage
 
 
