@@ -20,10 +20,6 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
 import urllib2
 
-
-# import os ## Import library to run shell commands
-# import RPi.GPIO as GPIO ## Import GPIO library
-
 class S(BaseHTTPRequestHandler):
 
     def _set_headers(self):
@@ -45,27 +41,24 @@ class S(BaseHTTPRequestHandler):
 
         # Check if you are entering or exiting the iBeacon area
 
-        action = "Didn't understand command!"
-        returnmessage = "Didn't understand command!"
-        if 'LocationExit' in post_data:
-            returnmessage = 'You just exited the iBeacon area!'
+        if 'LocationExit' in post_data: # LocationExit is received on POST request
+            print 'You just exited the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('0')
             urllib2.urlopen('http://192.168.1.13:9500?c3')  # Send command to HomeNetwork
-        elif 'LocationEnter' in post_data:
-            returnmessage = 'You just entered the iBeacon area!'
+        elif 'LocationEnter' in post_data: # LocationEnter is received on POST request
+            print 'You just entered the iBeacon area!'
             log = open('log.txt', 'wb')
             log.write('1')
             urllib2.urlopen('http://192.168.1.13:9500?c4')  # Send command to HomeNetwork
-        else:
+        else: # What happens if command is not understood
             print post_data
+            print "Didn't understand command!"
+
 
         # Print action feedback
         # self.wfile.write('<html><body><h1>' + returnmessage
         #                 + '</h1></body></html>')
-
-        print returnmessage
-
 
 def run(server_class=HTTPServer, handler_class=S, port=4050):
     server_address = ('', port)
