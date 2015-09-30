@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 __author__ = 'Prince Stevie-Ray Charles Balabis <princebalabis@gmail.com>'
 import logging
 import json
