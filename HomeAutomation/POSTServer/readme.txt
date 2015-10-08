@@ -1,5 +1,4 @@
-This webserver is used to connect HomeNetwork to the internet
-
+This POST Server is used to connect HomeNetwork to the internet using POST method
 
 Have GeoHooper installed on iPhone:
 Webservice:
@@ -13,5 +12,5 @@ Region:
 Make server launch at boot:
 chmod 755 launcher.sh
 sudo crontab -e
-	@reboot /bin/sleep 120 ; sh /root/NAS_Software/HomeNetworkWebserver/launcher.sh >/root/logs/HomeNetworkWebserver_log.txt 2>&1
+	@reboot /bin/sleep 120 ; sh /root/NAS_Software/HomeAutomation/POSTServer/launcher.sh >/root/logs/POSTServer.log 2>&1
 sudo reboot
