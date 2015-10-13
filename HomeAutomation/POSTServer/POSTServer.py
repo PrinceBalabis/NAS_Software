@@ -52,7 +52,7 @@ class S(BaseHTTPRequestHandler):
             log = open('log.txt', 'wb')
             log.write('0')
             try:
-                urllib2.urlopen('http://192.168.1.13:9500/3')  # Send command to HomeNetwork
+                urllib2.urlopen('http://192.168.1.18:9500/3')  # Send command to HomeNetwork
             except:
                 pass
         elif 'LocationEnter' in post_data:
@@ -64,7 +64,7 @@ class S(BaseHTTPRequestHandler):
             log = open('log.txt', 'wb')
             log.write('1')
             try:
-                urllib2.urlopen('http://192.168.1.13:9500/4')  # Send command to HomeNetwork
+                urllib2.urlopen('http://192.168.1.18:9500/4')  # Send command to HomeNetwork
             except:
                 pass
         else:
