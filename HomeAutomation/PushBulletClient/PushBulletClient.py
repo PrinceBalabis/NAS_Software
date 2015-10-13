@@ -27,7 +27,7 @@ def on_push(data):
         print strftime('%Y-%m-%d %H:%M:%S', gmtime()),
         print('Got PrinceHome command: ' + body_message)
         try:
-            urllib2.urlopen("http://192.168.1.13:9500?c"+body_message).read() #Send command to HomeNetwork
+            urllib2.urlopen("http://192.168.1.13:9500/"+body_message).read() #Send command to HomeNetwork
         except:
             pass
 
