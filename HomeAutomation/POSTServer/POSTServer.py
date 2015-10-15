@@ -49,7 +49,7 @@ class S(BaseHTTPRequestHandler):
         if 'LocationExit' in post_data:  # LocationExit is received on POST request
             print strftime('%Y-%m-%d %H:%M:%S', gmtime()),
             print 'You just exited the iBeacon area!'
-            log = open('log.txt', 'wb')
+            log = open('status.txt', 'wb')
             log.write('0')
             try:
                 urllib2.urlopen('http://192.168.1.18:9500/3')  # Send command to HomeNetwork
@@ -61,7 +61,7 @@ class S(BaseHTTPRequestHandler):
 
             print strftime('%Y-%m-%d %H:%M:%S', gmtime()),
             print 'You just entered the iBeacon area!'
-            log = open('log.txt', 'wb')
+            log = open('status.txt', 'wb')
             log.write('1')
             try:
                 urllib2.urlopen('http://192.168.1.18:9500/4')  # Send command to HomeNetwork

@@ -12,5 +12,5 @@ Region:
 Make server launch at boot:
 chmod 755 launcher.sh
 sudo crontab -e
-	@reboot /bin/sleep 120 ; sh /root/NAS_Software/HomeAutomation/POSTServer/launcher.sh >/root/logs/POSTServer.log 2>&1
+	@reboot /bin/sleep 120 ; sh /root/NAS_Software/HomeAutomation/POSTServer/launcher.sh >/root/NAS_Software/HomeAutomation/PushBulletClient/POSTServer.log 2>&1
 sudo reboot
