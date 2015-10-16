@@ -39,7 +39,7 @@ class S(BaseHTTPRequestHandler):
 
 #        self._set_headers()
 
-        from time import gmtime, strftime
+        from time import localtime, strftime
 
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
@@ -47,10 +47,13 @@ class S(BaseHTTPRequestHandler):
         # Check if you are entering or exiting the iBeacon area
 
         if 'LocationExit' in post_data:  # LocationExit is received on POST request
-            print strftime('%Y-%m-%d %H:%M:%S', gmtime()),
-            print 'You just exited the iBeacon area!'
-            log = open('status.txt', 'wb')
-            log.write('0')
+            log = open('POSTServer.log', 'a')
+            log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just exited the iBeacon area!\n');
+            log.close()
+            print(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just exited the iBeacon area!')
+            status = open('status.txt', 'wb')
+            status.write('0')
+            status.close()
             try:
                 urllib2.urlopen('http://192.168.1.18:9500/3')  # Send command to HomeNetwork
             except:
@@ -58,9 +61,10 @@ class S(BaseHTTPRequestHandler):
         elif 'LocationEnter' in post_data:
 
                                           # LocationEnter is received on POST request
-
-            print strftime('%Y-%m-%d %H:%M:%S', gmtime()),
-            print 'You just entered the iBeacon area!'
+            log = open('POSTServer.log', 'a')
+            log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just entered the iBeacon area!\n');
+            log.close()
+            print(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just entered the iBeacon area!')
             log = open('status.txt', 'wb')
             log.write('1')
             try:

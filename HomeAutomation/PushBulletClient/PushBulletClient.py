@@ -1,3 +1,7 @@
+"""
+Use 'http://pythoniter.appspot.com/' to beautify/indent python code
+"""
+
 __author__ = 'Prince Stevie-Ray Charles Balabis <princebalabis@gmail.com>'
 import logging
 import json
@@ -23,15 +27,21 @@ def on_push(data):
     body_message = json_object[0]['body'] # Parse JSON Object
     #print(title_message) #print title
     if title_message in 'PrinceHome': # Check if the push is a PrinceHome type
-        from time import gmtime, strftime
-        print strftime('%Y-%m-%d %H:%M:%S', gmtime()),
-        print('Got PrinceHome command: ' + body_message)
+        from time import localtime, strftime
+        log = open('PushBulletClient.log', 'a')
+        log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' Got PrinceHome command: ' + body_message + '\n');
+        log.close()
+        print(strftime('%Y-%m-%d %H:%M:%S', localtime()) + 'Got PrinceHome command: ' + body_message)
         try:
             urllib2.urlopen("http://192.168.1.18:9500/"+body_message).read() #Send command to HomeNetwork
         except:
             pass
 
 def main():
+    from time import localtime, strftime
+    log = open('PushBulletClient.log', 'a')
+    log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' Started PushBullet listener, relaying to Home Network\n');
+    log.close()
     print 'Started PushBullet listener, relaying to Home Network'
     global pb
     pb = Pushbullet(API_KEY)
