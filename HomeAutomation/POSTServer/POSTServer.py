@@ -87,6 +87,7 @@ def run(server_class=HTTPServer, handler_class=S, port=4050):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     log = open('POSTServer.log', 'a')
+    from time import localtime, strftime
     log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' Started iBeacon Smart Home Server\n');
     log.close()
     print 'Started iBeacon Smart Home Server'
