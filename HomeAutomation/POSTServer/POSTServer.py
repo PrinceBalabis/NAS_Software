@@ -23,10 +23,10 @@ import urllib2
 
 class S(BaseHTTPRequestHandler):
 
-#    def _set_headers(self):
-#        self.send_response(200)
-#        self.send_header('Content-type', 'text/html')
-#        self.end_headers()
+    def _set_headers(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
 
 #    def do_GET(self):
 #        self._set_headers()
@@ -37,7 +37,11 @@ class S(BaseHTTPRequestHandler):
 
     def do_POST(self):
 
-#        self._set_headers()
+        # Send a simple message to the connected client
+
+        self._set_headers()
+        self.wfile.write('Done')
+        self.wfile.close()
 
         from time import localtime, strftime
 
@@ -48,9 +52,11 @@ class S(BaseHTTPRequestHandler):
 
         if 'LocationExit' in post_data:  # LocationExit is received on POST request
             log = open('POSTServer.log', 'a')
-            log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just exited the iBeacon area!\n');
+            log.write(strftime('%Y-%m-%d %H:%M:%S', localtime())
+                      + ' You just exited the iBeacon area!\n')
             log.close()
-            print(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just exited the iBeacon area!')
+            print strftime('%Y-%m-%d %H:%M:%S', localtime()) \
+                + ' You just exited the iBeacon area!'
             status = open('status.txt', 'wb')
             status.write('0')
             status.close()
@@ -61,10 +67,13 @@ class S(BaseHTTPRequestHandler):
         elif 'LocationEnter' in post_data:
 
                                           # LocationEnter is received on POST request
+
             log = open('POSTServer.log', 'a')
-            log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just entered the iBeacon area!\n');
+            log.write(strftime('%Y-%m-%d %H:%M:%S', localtime())
+                      + ' You just entered the iBeacon area!\n')
             log.close()
-            print(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' You just entered the iBeacon area!')
+            print strftime('%Y-%m-%d %H:%M:%S', localtime()) \
+                + ' You just entered the iBeacon area!'
             log = open('status.txt', 'wb')
             log.write('1')
             try:
@@ -79,16 +88,13 @@ class S(BaseHTTPRequestHandler):
             print "Didn't understand command!"
 
 
-        # Print action feedback
-        # self.wfile.write('<html><body><h1>' + returnmessage
-        #                 + '</h1></body></html>')
-
 def run(server_class=HTTPServer, handler_class=S, port=4050):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     log = open('POSTServer.log', 'a')
     from time import localtime, strftime
-    log.write(strftime('%Y-%m-%d %H:%M:%S', localtime()) + ' Started iBeacon Smart Home Server\n');
+    log.write(strftime('%Y-%m-%d %H:%M:%S', localtime())
+              + ' Started iBeacon Smart Home Server\n')
     log.close()
     print 'Started iBeacon Smart Home Server'
 
